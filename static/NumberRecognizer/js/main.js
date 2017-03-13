@@ -19,7 +19,7 @@ $(document).ready(function() {
           8: '8',
           9: '9',
         })
-      }, 1000)
+      }, 500)
     })
     swal({
       title: 'Select the Answer of the Image',
@@ -60,6 +60,23 @@ $(document).ready(function() {
           /* DO SOMETHING */
         }
       });
+    });
+  });
+
+  $('#generate-btn').on('click', function(event) {
+    /* Send AJAX POST */
+    var token = $('input[name="csrfmiddlewaretoken"]').prop('value');
+    $.ajax({
+      type: 'post',
+      data: { ajax: 'true' },
+      dataType: 'json',
+      url: 'generate_data/',
+      cache: false,
+      beforeSend: function(jqXHR, settings) { jqXHR.setRequestHeader('x-csrftoken', token); },
+      success: function(data) {
+        /* DO SOMETHING */
+        console.log(data);
+      }
     });
   });
 

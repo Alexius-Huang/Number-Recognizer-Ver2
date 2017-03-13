@@ -15,7 +15,7 @@ class Migration(migrations.Migration):
         migrations.RenameField(
             model_name='imagedata',
             old_name='level_type',
-            new_name='gray_scale_level',
+            new_name='grayscale_level',
         ),
         migrations.RenameField(
             model_name='imagedata',

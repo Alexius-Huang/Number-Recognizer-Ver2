@@ -2,36 +2,37 @@ import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
 import numpy as np
 import os.path as path
+from main.models import ImageData, ImageSample
 from main.helpers import image_processing as imgps
+from main.helpers import utils
 from PIL import Image
+from sklearn import svm, metrics
+from sklearn.externals import joblib
+import json
 
-img_dir = './data/calibrated/sample000013.jpg'
-gray = imgps.imread_grayscale(img_dir)
+# TARGETS = [ i for i in range(0, 10) ]
 
 LEVEL = [8, 16, 32, 64, 128]
+# def learn(img_dir, level):
+  # NOTHING
 
-def generate_processed_image(img_dir):
-  for resolution_level, resolution in enumerate(LEVEL):
-    save_directory = './data/processed/level_%i' % (resolution_level + 1)
-    filename = path.join(save_directory, 'sample.jpg')
+# gray = imgps.imread_grayscale(img_dir)
+# inv_gray = imgps.image_grayscale_invert(gray)
+# data_array = imgps.one_dimensionalize(inv_gray)
 
-    img = Image.open(img_dir)
-    img = img.resize((resolution, resolution), Image.ANTIALIAS)
-    img.save(filename)
+samples = ImageSample.get_samples();
 
-  # Get the size of the image
-  # size = np.shape(gray)
-  # height = size[0]
-  # width  = size[1]
+# data =
+# target = 4
+# for resolution_level in range(1, 6):
+#   for grayscale_level in range(1, 6):
+#     img_dir  = "./data/processed/level_%i/sample000016.jpg" % resolution_level
+#     gray = imgps.imread_grayscale(img_dir)
+#     inv_gray = imgps.image_grayscale_invert(gray)
+#     data_array = imgps.one_dimensionalize(inv_gray)
 
-def generate_grayscale_level_array(imgID):
 
-# img = Image.open(img_dir)
-# img = img.resize((8, 8), Image.ANTIALIAS)
-# img.save('test.jpg')
+# print gray
+# print inv_gray
 
-# gray = imgps.imread_grayscale('test.jpg')
-# plt.imshow(gray, cmap='gray')
-# plt.show()
-
-# print(gray)
+print samples

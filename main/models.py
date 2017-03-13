@@ -33,20 +33,21 @@ class ImageData(models.Model):
     blank = True
   )
   json             = models.TextField()
-  gray_scale_level = models.SmallIntegerField()
+  grayscale_level  = models.SmallIntegerField()
   resolution_level = models.SmallIntegerField()
   status           = models.SmallIntegerField()
   created_at       = models.DateTimeField(auto_now_add = True)
   updated_at       = models.DateTimeField()
 
   def __str__(self):
-    return "ImageData %i - Level %i with Resolution %i" % (self.id, self.level_type, self.resolution_type)
+    return "ImageData %i - Grayscale Level %i : Resolution Level %i" % (self.id, self.grayscale_level, self.resolution_level)
 
 """
   id - not only represent the uniqueness of the data but also the reference to image filename
   number - The representing number of the image
 """
 class ImageSample(models.Model):
+  serial     = models.IntegerField(default = 0)
   number     = models.SmallIntegerField()
   processed  = models.BooleanField(default = False)
   created_at = models.DateTimeField(auto_now_add = True)
@@ -54,4 +55,3 @@ class ImageSample(models.Model):
 
   def __str__(self):
     return "ImageSample %i" % self.id
-

@@ -10,6 +10,21 @@ LEVEL = [8, 16, 32, 64, 128]
 def rgb2gray(rgb):
   return np.dot(rgb[...,:3], [0.299, 0.587, 0.114])
 
+# Convert two dimensional array into one dimension numpy array
+def one_dimensionalize(two_dimensional_array):
+  # Get the shape of the array
+  size = np.shape(two_dimensional_array)
+  height = size[0]
+  width  = size[1]
+
+  # Parsing into new array
+  result = []
+  for y in range(0, height):
+    for x in range(0, width):
+      result.append(two_dimensional_array[y][x])
+
+  return np.array(result)
+
 # Calibrate the image in order to let the gravity of mass of the number centered
 def calibrate_image_array(numpy_grayscale_array):
   gray = numpy_grayscale_array

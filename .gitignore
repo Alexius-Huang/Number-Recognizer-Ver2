@@ -1,1 +1,8 @@
 *.pyc
+data/calibrated/*.jpg
+data/processed/level_1/*.jpg
+data/processed/level_2/*.jpg
+data/processed/level_3/*.jpg
+data/processed/level_4/*.jpg
+data/processed/level_5/*.jpg
+data/samples/*.jpg
